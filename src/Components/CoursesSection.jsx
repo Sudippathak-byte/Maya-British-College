@@ -73,7 +73,7 @@ const CoursesSection = () => {
       university: "University of Central Lancashire (UCLan)",
       description: "Combine business acumen with technical expertise. Learn to develop IT solutions that drive modern enterprises forward.",
       level: "Undergraduate",
-      image: "/public/Photo for Information System.jpg"
+      image: "/Photo for Information System.jpg"
     },
     {
       id: 2,
@@ -81,7 +81,7 @@ const CoursesSection = () => {
       university: "University of Central Lancashire (UCLan)",
       description: "Master the art of protecting digital assets. Gain hands-on experience with cutting-edge security technologies.",
       level: "Undergraduate",
-      image: "/public/Photo for Cyber Security.jpg"
+      image: "/Photo for Cyber Security.jpg"
     },
     {
       id: 3,
@@ -89,7 +89,7 @@ const CoursesSection = () => {
       university: "Tribhuvan University (TU)",
       description: "Build strong business fundamentals with Nepal's most prestigious business degree program.",
       level: "Undergraduate",
-      image: "/public/bbs.png"
+      image: "/bbs.png"
     },
     {
       id: 4,
@@ -97,7 +97,7 @@ const CoursesSection = () => {
       university: "Tribhuvan University (TU)",
       description: "Elevate your business expertise with advanced management theories and practical applications.",
       level: "Graduate",
-      image: "/public/mbs.png"
+      image: "/mbs.png"
     }
   ];
 

@@ -11,8 +11,8 @@ const About = () => {
             
         </div>
         <div className="grid grid-cols-2 gap-4 mt-8">
-            <img className="w-full rounded-lg" src="/public/Photo of Maya College.webp" alt="MAYA College"/>
-            <img className="w-full mt-4 rounded-lg lg:mt-10" src="/public/Photo of UCLan.jpg" alt="Uclan University"/>
+            <img className="w-full rounded-lg" src="/Photo of Maya College.webp" alt="MAYA College"/>
+            <img className="w-full mt-4 rounded-lg lg:mt-10" src="/Photo of UCLan.jpg" alt="Uclan University"/>
         </div>
     </div>
 </section>

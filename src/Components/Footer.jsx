@@ -7,7 +7,7 @@ const Footer = () => {
                 {/* Logo and College name with elegant animation */}
                 <div className="flex flex-col items-center mb-12 group">
                     <img 
-                        src="/public/maya logo.jpg" 
+                        src="/maya logo.jpg" 
                         alt="MAYA Logo" 
                         className="h-16 mb-4 transition-transform duration-500 group-hover:scale-110"
                     />
