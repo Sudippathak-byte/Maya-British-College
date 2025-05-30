@@ -21,7 +21,7 @@ const Video = () => {
         playsInline
       >
         <source
-          src="/public/UCLAN From Above - DJI Mini 3 Pro 4K_Full-HD.mp4" // Removed `/public` (correct path)
+          src="/UCLAN From Above - DJI Mini 3 Pro 4K_Full-HD.mp4" // Removed `/public` (correct path)
           type="video/mp4"
         />
         Your browser does not support the video tag.

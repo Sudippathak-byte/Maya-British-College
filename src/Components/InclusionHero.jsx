@@ -25,7 +25,7 @@ const InclusionHero = () => {
     
     {/* <!-- Right image --> */}
     <div className="md:w-1/2">
-      <img src="/public/welcome.png" alt="Welcome illustration" className="w-full h-auto rounded-lg"/>
+      <img src="/welcome.png" alt="Welcome illustration" className="w-full h-auto rounded-lg"/>
     </div>
   </div>
 </div>

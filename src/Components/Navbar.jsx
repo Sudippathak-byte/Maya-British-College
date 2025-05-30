@@ -75,7 +75,7 @@ const Navbar = () => {
       <nav className="flex items-center justify-between px-16 py-3 bg-white border-b shadow-md">
         {/* Logo & Title */}
         <div className="flex items-center space-x-3">
-            <img src="/public/maya logo.jpg" alt="MAYA British College" className="w-auto h-12" />
+            <img src="/maya logo.jpg" alt="MAYA British College" className="w-auto h-12" />
           <div>
             <h1 className="text-xl font-bold text-blue-800">Maya British College</h1>
             <p className="text-sm font-semibold text-black">Affiliated to University of Central Lancashire, UK</p>
