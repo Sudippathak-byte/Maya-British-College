@@ -1,3 +1,56 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+@keyframes flagTransition {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+@keyframes flagTransitionDelayed {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+@keyframes textFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-flagTransition {
+  animation: flagTransition 8s infinite;
+}
+.animate-flagTransitionDelayed {
+  animation: flagTransitionDelayed 8s infinite;
+}
+.animate-textFadeIn {
+  animation: textFadeIn 1.5s ease-out forwards;
+}
+.animate-gradientFlow {
+  background-size: 200% 200%;
+  animation: gradientFlow 6s ease infinite;
+}
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.animate-bounce-slow {
+  animation: bounce 3s infinite;
+}
+.animate-spin-slow {
+  animation: spin 8s linear infinite;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
