@@ -21,7 +21,7 @@ const partners = [
   {
     id: 3,
     name: "Maya Animation",
-    logo: "/mayaalogo.png",
+    logo: "/animation.png",
     headline: "Creative Digital Innovation",
     description: "Pushing boundaries in animation and digital media with award-winning creative solutions.",
     color: "from-purple-600 to-pink-600"
