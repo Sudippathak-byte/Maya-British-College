@@ -5,170 +5,132 @@ const partners = [
   {
     id: 1,
     name: "NCC Education",
-    logo: "/ncclogo.png", // Replace with your actual image paths
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    logo: "/ncclogo.png",
+    headline: "Awarding Great British Qualifications",
+    description: "NCC Education is a leading UK awarding body offering internationally recognized qualifications and quality education worldwide."
   },
   {
     id: 2,
-    name: "Uclan University",
+    name: "University of Central Lancashire",
     logo: "/uclanlogo.jpg",
-    description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    headline: "Global Education Excellence",
+    description: "UCLan delivers world-class education and research across 180 countries with outstanding graduate employability."
   },
   {
     id: 3,
     name: "Maya Animation",
     logo: "/mayaalogo.png",
-    description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
-  },
-  {
-    id: 4,
-    name: "california State University",
-    logo: "/californiastateuniversitylogo.png",
-    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet."
-  },
-  {
-    id: 5,
-    name: "UWE Bristol",
-    logo: "/uwebristollogo.png",
-    description: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa."
-  },
-  {
-    id: 6,
-    name: "University of West Alabama",
-    logo: "/uwalogo.png",
-    description: "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus."
-  },
-  {
-    id: 7,
-    name: "Christian Brothers University",
-    logo: "/cbulogo.jpg",
-    description: "Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est."
+    headline: "Creative Digital Innovation",
+    description: "Pushing boundaries in animation and digital media with award-winning creative solutions."
   }
 ];
 
 const TrustedPartners = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(1);
   const autoSlideRef = useRef(null);
 
   const nextSlide = () => {
-    setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % partners.length);
     resetAutoSlide();
   };
 
   const prevSlide = () => {
-    setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + partners.length) % partners.length);
     resetAutoSlide();
   };
 
   const resetAutoSlide = () => {
     clearInterval(autoSlideRef.current);
-    autoSlideRef.current = setInterval(nextSlide, 3000);
+    autoSlideRef.current = setInterval(nextSlide, 8000);
   };
 
   useEffect(() => {
-    autoSlideRef.current = setInterval(nextSlide, 3000);
+    autoSlideRef.current = setInterval(nextSlide, 8000);
     return () => clearInterval(autoSlideRef.current);
   }, []);
 
-  const visiblePartners = [];
-  for (let i = -1; i <= 1; i++) {
-    const index = (currentIndex + i + partners.length) % partners.length;
-    visiblePartners.push({
-      ...partners[index],
-      position: i
-    });
-  }
-
   return (
-    <div className="relative px-4 py-16 mx-auto my-12 overflow-hidden shadow-xl sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl max-w-7xl">
-      {/* Animated gradient border */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-600 via-cyan-500 to-indigo-600 bg-[length:200%_200%] animate-gradient-x" />
+    <div className="relative py-20 overflow-hidden bg-white">
+      {/* Decorative elements */}
+      <div className="absolute inset-0 overflow-hidden opacity-10">
+        <div className="absolute inset-0 bg-[url('/path-to-subtle-pattern.png')] bg-repeat"></div>
+      </div>
       
-      {/* Title */}
-      <h2 className="relative mb-12 text-4xl font-bold text-center text-gray-900">
-        Trusted Partners
-        <span className="absolute bottom-0 w-20 h-1 transform -translate-x-1/2 bg-indigo-600 rounded-full left-1/2" />
-      </h2>
-      
+      {/* Header */}
+      <div className="px-6 mx-auto text-center max-w-7xl">
+        <p className="text-sm font-semibold tracking-widest text-blue-600 uppercase">STRATEGIC ALLIANCES</p>
+        <h2 className="mt-4 text-4xl font-bold text-gray-900 sm:text-5xl">
+          Our <span className="text-blue-600">Trusted Partners</span>
+        </h2>
+        <div className="w-16 h-1 mx-auto mt-6 bg-blue-600 rounded-full"></div>
+      </div>
+
       {/* Carousel */}
-      <div className="relative flex items-center justify-center w-full mb-12">
-        {/* Navigation buttons */}
+      <div className="relative px-6 mx-auto mt-16 max-w-7xl">
+        {/* Navigation arrows */}
         <button 
           onClick={prevSlide}
-          className="absolute z-10 flex items-center justify-center w-12 h-12 transition-all duration-300 bg-white rounded-full shadow-lg left-4 sm:left-8 hover:bg-indigo-600 hover:text-white hover:shadow-xl active:scale-95"
+          className="absolute z-10 p-2 text-gray-400 transition-all -translate-y-1/2 left-6 top-1/2 hover:text-blue-600"
+          aria-label="Previous partner"
         >
-          <svg className="w-6 h-6 text-indigo-600 hover:text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
+          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
         
-        <div className="relative flex items-center justify-center w-full h-48 max-w-4xl perspective-1000">
-          <AnimatePresence custom={direction}>
-            {visiblePartners.map((partner) => (
-              <motion.div
-                key={`${partner.id}-${partner.position}`}
-                className={`absolute flex items-center justify-center ${
-                  partner.position === 0 ? 'w-64 h-32 z-30' : 
-                  partner.position === -1 ? 'w-48 h-24 left-16 sm:left-24 z-20' : 
-                  'w-48 h-24 right-16 sm:right-24 z-20'
-                }`}
-                initial={{ 
-                  x: direction * 300, 
-                  opacity: 0,
-                  scale: 0.8
-                }}
-                animate={{ 
-                  x: 0, 
-                  opacity: partner.position === 0 ? 1 : 0.6,
-                  scale: partner.position === 0 ? 1.1 : 0.9,
-                  filter: partner.position === 0 ? 'none' : 'grayscale(30%)'
-                }}
-                exit={{ 
-                  x: -direction * 300, 
-                  opacity: 0,
-                  scale: 0.8
-                }}
-                transition={{ 
-                  type: "spring", 
-                  stiffness: 300, 
-                  damping: 30 
-                }}
-                custom={direction}
-              >
-                <img 
-                  src={partner.logo} 
-                  alt={`${partner.name} logo`}
-                  className={`max-w-full max-h-full object-contain transition-transform duration-300 ${
-                    partner.position === 0 ? 'hover:scale-110' : 'hover:scale-105'
-                  }`}
-                />
-              </motion.div>
-            ))}
+        {/* Content */}
+        <div className="relative h-[400px] overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="absolute inset-0 flex items-center"
+            >
+              <div className="grid items-center grid-cols-1 gap-12 mx-auto lg:grid-cols-2 max-w-7xl">
+                {/* Logo */}
+                <div className="flex items-center justify-center p-8">
+                  <img 
+                    src={partners[currentIndex].logo} 
+                    alt={`${partners[currentIndex].name} logo`}
+                    className="object-contain max-h-40"
+                  />
+                </div>
+                
+                {/* Details */}
+                <div className="space-y-6">
+                  <p className="text-xl font-medium text-blue-600">{partners[currentIndex].headline}</p>
+                  <h3 className="text-3xl font-bold text-gray-900">{partners[currentIndex].name}</h3>
+                  <p className="text-lg leading-relaxed text-gray-600">{partners[currentIndex].description}</p>
+                </div>
+              </div>
+            </motion.div>
           </AnimatePresence>
         </div>
         
         <button 
           onClick={nextSlide}
-          className="absolute z-10 flex items-center justify-center w-12 h-12 transition-all duration-300 bg-white rounded-full shadow-lg right-4 sm:right-8 hover:bg-indigo-600 hover:text-white hover:shadow-xl active:scale-95"
+          className="absolute z-10 p-2 text-gray-400 transition-all -translate-y-1/2 right-6 top-1/2 hover:text-blue-600"
+          aria-label="Next partner"
         >
-          <svg className="w-6 h-6 text-indigo-600 hover:text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
+          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
           </svg>
         </button>
       </div>
-      
-      {/* Partner info */}
-      <div className="max-w-3xl px-4 mx-auto text-center">
-        <h3 className="relative inline-block mb-4 text-2xl font-bold text-gray-900">
-          {partners[currentIndex].name}
-          <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-12 h-0.5 bg-cyan-500 rounded-full" />
-        </h3>
-        <p className="text-lg leading-relaxed text-gray-600">
-          {partners[currentIndex].description}
-        </p>
+
+      {/* Minimal pagination */}
+      <div className="flex justify-center mt-12 space-x-2">
+        {partners.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-3 h-3 rounded-full transition-all ${index === currentIndex ? 'bg-blue-600' : 'bg-gray-300'}`}
+            aria-label={`Go to partner ${index + 1}`}
+          />
+        ))}
       </div>
     </div>
   );
