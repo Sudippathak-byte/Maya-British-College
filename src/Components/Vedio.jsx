@@ -11,7 +11,7 @@ const Video = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[70vh] bg-black/30 ">
+    <div className="relative w-full h-[90vh] bg-black/30 ">
       <video 
         ref={videoRef}
         className="object-cover w-full h-full mix-blend-overlay" 
