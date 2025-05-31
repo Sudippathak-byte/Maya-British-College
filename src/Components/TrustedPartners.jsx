@@ -11,37 +11,37 @@ const partners = [
   {
     id: 2,
     name: "Uclan University",
-    logo: "/uclan logo.jpg",
+    logo: "/uclanlogo.jpg",
     description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
   {
     id: 3,
     name: "Maya Animation",
-    logo: "/mayaAlogo.png",
+    logo: "/mayaalogo.png",
     description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
   },
   {
     id: 4,
     name: "California State University",
-    logo: "/california state university logo.png",
+    logo: "/californiastateuniversity logo.png",
     description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet."
   },
   {
     id: 5,
     name: "UWE Bristol",
-    logo: "/uwe bristol logo.png",
+    logo: "/uwebristollogo.png",
     description: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa."
   },
   {
     id: 6,
     name: "University of West Alabama",
-    logo: "/uwa-logo.png",
+    logo: "/uwalogo.png",
     description: "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus."
   },
   {
     id: 7,
     name: "Christian Brothers University",
-    logo: "/cbu-l",
+    logo: "/cbulogo",
     description: "Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est."
   }
 ];
