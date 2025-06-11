@@ -513,7 +513,7 @@ const Navbar = () => {
             <div className="flex items-center space-x-4">
               <div className="flex items-center justify-center transition-all duration-300 shadow-xl w-14 h-14 hover:shadow-2xl hover:scale-105">
                 <div className="flex items-center justify-center h-12 h-16 rounded-full">
-                  <img src="/public/mayalogo.jpg" alt="MayaLogo.png" />
+                  <img src="/mayalogo.jpg" alt="MayaLogo.png" />
                 </div>
               </div>
               <div className="hidden sm:block">
