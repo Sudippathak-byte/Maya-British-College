@@ -19,6 +19,8 @@ const Video = () => {
         loop 
         muted 
         playsInline
+        preload="auto"
+        poster="/path-to-poster.jpg"  // Replace with your poster image path or remove if not used
       >
         <source
           src="/UCLAN From Above - DJI Mini 3 Pro 4K_Full-HD.mp4"
