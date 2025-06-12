@@ -512,7 +512,7 @@ const Navbar = () => {
               <div className="flex items-center space-x-4">
                 <div className="flex items-center justify-center transition-all duration-300">
                   <img 
-                    src="/src/assets/mayalogo.jpg" 
+                    src="/mayalogo.jpg" 
                     alt="Maya British College Logo" 
                     className="object-contain h-16"
                     style={{

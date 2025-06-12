@@ -78,7 +78,7 @@ const CoursesSection = () => {
       provider: "NCC Education",
       description: "The NCC Education Level 4 Diploma in Computing (L4DC) is an Ofqual regulated qualification. The qualification makes up the first year of a Computing/IT degree pathway, equivalent to the first year of an IT degree in the UK university system.",
       level: "Level 4",
-      image: "/src/assets/L4dc.png"
+      image: "/L4dc.png"
     },
     {
       id: 2,
@@ -86,7 +86,7 @@ const CoursesSection = () => {
       provider: "NCC Education",
       description: "The NCC Education Level 5 Diploma in Computing (L5DC) is an Ofqual regulated qualification. The qualification (with specialisms) makes up the second year of the NCC Education degree journey.",
       level: "Level 5",
-      image: "/src/assets/L5dc.jpg"
+      image: "/L5dc.jpg"
     },
     {
       id: 3,
@@ -94,7 +94,7 @@ const CoursesSection = () => {
       provider: "University of Central Lancashire (UCLan)",
       description: "Combine business acumen with technical expertise. Learn to develop IT solutions that drive modern enterprises forward.",
       level: "Undergraduate",
-      image: "/src/assets/PhotoforInformationSystem.jpg"
+      image: "/PhotoforInformationSystem.jpg"
     },
     {
       id: 4,
@@ -102,7 +102,7 @@ const CoursesSection = () => {
       provider: "University of Central Lancashire (UCLan)",
       description: "Master the art of protecting digital assets. Gain hands-on experience with cutting-edge security technologies.",
       level: "Undergraduate",
-      image: "/src/assets/PhotoforCyberSecurity.jpg"
+      image: "/PhotoforCyberSecurity.jpg"
     },
     {
       id: 5,
@@ -110,7 +110,7 @@ const CoursesSection = () => {
       provider: "NCC Education",
       description: "A focused program covering essential cybersecurity concepts, tools, and techniques for professionals looking to enhance their security skills.",
       level: "Short Course",
-      image: "/src/assets/cybersecurity.png"
+      image: "/cybersecurity.png"
     }
   ];
 

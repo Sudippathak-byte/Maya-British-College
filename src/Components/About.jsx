@@ -104,7 +104,7 @@ const About = () => {
             >
               <img 
                 className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
-                src="/src/assets/PhotoofMayaCollege.webp" 
+                src="/PhotoofMayaCollege.webp" 
                 alt="MAYA British College Campus" 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
@@ -122,7 +122,7 @@ const About = () => {
             >
               <img 
                 className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
-                src="/src/assets/PhotoofUCLan.jpg" 
+                src="/PhotoofUCLan.jpg" 
                 alt="University of Central Lancashire" 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>

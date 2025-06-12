@@ -3,8 +3,8 @@ import React, { useRef, useState } from 'react';
 const Video = () => {
   const videoRef = useRef(null);
   const [videoError, setVideoError] = useState(false);
-  const videoSrc = "/src/assets/UCLAN.mp4";
-  const fallbackImage = "/src/assets/PhotoofUCLan.jpg"; // Make sure to provide a proper fallback image path
+  const videoSrc = "/UCLAN.mp4";
+  const fallbackImage = "/PhotoofUCLan.jpg"; // Make sure to provide a proper fallback image path
 
   // Set video to skip first 4 seconds and loop
   const handleLoadedMetadata = () => {

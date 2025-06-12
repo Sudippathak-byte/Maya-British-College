@@ -5,7 +5,7 @@ const partners = [
   {
     id: 1,
     name: "NCC Education",
-    logo: "/src/assets/ncclogo.png",
+    logo: "/ncclogo.png",
     headline: "Awarding Great British Qualifications",
     description: "NCC Education is a leading UK awarding body offering internationally recognized qualifications and quality education worldwide.",
     color: "from-[#00609a] to-[#004a7c]"
@@ -13,7 +13,7 @@ const partners = [
   {
     id: 2,
     name: "University of Central Lancashire",
-    logo: "/src/assets/uclanlogo.jpg",
+    logo: "/uclanlogo.jpg",
     headline: "Global Education Excellence", 
     description: "UCLan delivers world-class education and research across 180 countries with outstanding graduate employability.",
     color: "from-[#00609a] to-[#0088cc]"
@@ -21,7 +21,7 @@ const partners = [
   {
     id: 3,
     name: "Maya Animation",
-    logo: "/src/assets/animation.png",
+    logo: "/animation.png",
     headline: "Creative Digital Innovation",
     description: "Pushing boundaries in animation and digital media with award-winning creative solutions.",
     color: "from-[#00609a] to-[#00a0e0]"

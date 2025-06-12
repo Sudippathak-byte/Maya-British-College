@@ -32,7 +32,7 @@ const InclusionHero = () => {
                     <div className="w-full lg:w-1/2">
                         <div className="overflow-hidden rounded-lg shadow-xl">
                             <img 
-                                src="/src/assets/welcome.png" 
+                                src="/welcome.png" 
                                 alt="Welcome illustration" 
                                 className="object-cover w-full h-auto transition duration-500 transform hover:scale-105"
                             />

@@ -34,7 +34,7 @@ const UCLanHeroSection = () => {
           ${showContent ? 'opacity-10' : 'opacity-30'}
         `}></div>
         <img
-          src="/src/assets/uclan.jpg"
+          src="/uclan.jpg"
           alt="UCLan Campus"
           className={`
             w-full h-full object-cover transition-all duration-1000
