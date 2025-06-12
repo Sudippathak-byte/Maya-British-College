@@ -19,8 +19,9 @@ const Home = () => {
             <Navbar/>
             <Vedio/>
             <About/>
-            <UCLanHeroSection/>
             <CoursesSection/>
+            
+            <UCLanHeroSection/>     
             <InclusionHero/>
             <TrustedPartners/>
             <Footer/>

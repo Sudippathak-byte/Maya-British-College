@@ -9,7 +9,7 @@ const Maintainance = () => {
       {/* Maya British College Logo */}
       <div className="flex justify-center w-full">
         <img 
-          src="/public/mayalogo.jpg"  
+          src="/src/assets/mayalogo.jpg"  
           alt="Maya British College Logo"
           className="object-contain h-16"  
         />

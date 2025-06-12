@@ -1,106 +1,103 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
-const VideoWithFallback = () => {
+const Video = () => {
   const videoRef = useRef(null);
-  const [videoLoaded, setVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
-  const [showFallback, setShowFallback] = useState(false);
+  const videoSrc = "/src/assets/UCLAN.mp4";
+  const fallbackImage = "/src/assets/PhotoofUCLan.jpg"; // Make sure to provide a proper fallback image path
 
-  useEffect(() => {
-    const video = videoRef.current;
-    let fallbackTimer;
-
-    // Set a timer to show fallback if video takes too long to load
-    fallbackTimer = setTimeout(() => {
-      if (!videoLoaded) {
-        setShowFallback(true);
-      }
-    }, 3000); // 3 seconds timeout
-
-    const handleLoaded = () => {
-      clearTimeout(fallbackTimer);
-      setVideoLoaded(true);
-      video.currentTime = 3;
-      video.play().catch(e => {
-        console.error("Autoplay failed:", e);
+  // Set video to skip first 4 seconds and loop
+  const handleLoadedMetadata = () => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 4;
+      videoRef.current.play().catch(error => {
+        console.log("Video play failed:", error);
         setVideoError(true);
       });
-    };
-
-    const handleError = () => {
-      clearTimeout(fallbackTimer);
-      setVideoError(true);
-      setShowFallback(true);
-    };
-
-    if (video) {
-      video.addEventListener('loadeddata', handleLoaded);
-      video.addEventListener('error', handleError);
-      video.preload = 'auto';
     }
-
-    return () => {
-      clearTimeout(fallbackTimer);
-      if (video) {
-        video.removeEventListener('loadeddata', handleLoaded);
-        video.removeEventListener('error', handleError);
-      }
-    };
-  }, [videoLoaded]);
+  };
 
   return (
-    <div className="relative w-full h-[90vh] bg-black/30">
-      {/* Video with fallback */}
-      {!showFallback ? (
+    <div className="relative w-full h-[79.8vh] bg-gray-900 overflow-hidden">
+      {/* Show fallback image if video fails to load */}
+      {videoError ? (
+        <img 
+          src={fallbackImage} 
+          alt="University Banner"
+          className="object-cover w-full h-full"
+        />
+      ) : (
         <video 
           ref={videoRef}
-          className="object-cover w-full h-full mix-blend-overlay" 
+          className="object-cover w-full h-full"
           autoPlay 
           loop 
           muted 
           playsInline
-          preload="auto"
-          loading="eager"
+          onError={() => setVideoError(true)}
+          onLoadedMetadata={handleLoadedMetadata}
         >
-          <source
-            src="/UCLAN From Above - DJI Mini 3 Pro 4K_Full-HD.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
+          <source src={videoSrc} type="video/mp4" />
         </video>
-      ) : (
-        <img 
-          src="/Photo of UCLan.jpg" // Replace with your fallback image path
-          alt="University Campus"
-          className="object-cover w-full h-full mix-blend-overlay"
-          loading="eager"
-        />
       )}
-      
-      {/* Overlay content */}
-      <div className="absolute inset-0 flex items-center justify-start px-4 sm:pl-8 md:pl-16 lg:pl-24">
-        <div className="max-w-2xl space-y-3 text-left sm:space-y-4">
-          <h1 className="text-2xl font-extrabold leading-tight sm:text-3xl md:text-4xl md:text-5xl">
-            <span className="text-white drop-shadow-lg">Study in Nepal,</span><br />
-            <span className="text-[#FFD700] bg-gradient-to-r from-[#1a365d]/90 to-[#0f4c81]/90 px-3 py-1 sm:px-4 sm:py-1 rounded-lg text-xl sm:text-2xl md:text-3xl">
-              Graduate in the UK
-            </span>
-          </h1>
 
-          <p className="text-base sm:text-lg md:text-xl text-[#00609a] font-medium bg-white/90 px-3 py-1 sm:px-4 sm:py-2 rounded-lg border-l-4 border-[#FFD700]">
-            <span className="text-[#FFD700] font-semibold">✓</span> Save 50% on UK degrees with global recognition
-          </p>
+      {/* Content overlay */}
+      <div className="absolute inset-0 flex items-center justify-start px-6 sm:pl-12 md:pl-20 lg:pl-32 bg-black/20">
+        <div className="max-w-2xl space-y-6 text-left">
+          <div className="mb-4">
+            <h1 className="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
+              Study in Nepal,
+            </h1>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
+              <span className="bg-[#00609a] px-4 py-3 rounded-md inline-block shadow-lg">
+                Graduate in the UK
+              </span>
+            </h2>
+          </div>
 
-          {/* Optional loading indicator */}
-          {!videoLoaded && !showFallback && (
-            <div className="text-white">
-              Loading video...
-            </div>
-          )}
+          <ul className="space-y-3">
+            <li className="flex items-start">
+              <div className="flex-shrink-0 p-1 mt-1 mr-3 bg-white rounded-full">
+                <svg className="w-5 h-5 text-[#00609a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <p className="text-xl font-medium leading-relaxed text-white sm:text-2xl">
+                <span className="font-semibold">Save 50%</span> on UK degrees with global recognition
+              </p>
+            </li>
+            <li className="flex items-start">
+              <div className="flex-shrink-0 p-1 mt-1 mr-3 bg-white rounded-full">
+                <svg className="w-5 h-5 text-[#00609a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <p className="text-xl font-medium leading-relaxed text-white sm:text-2xl">
+                <span className="font-semibold">Internationally accredited</span> programs
+              </p>
+            </li>
+            <li className="flex items-start">
+              <div className="flex-shrink-0 p-1 mt-1 mr-3 bg-white rounded-full">
+                <svg className="w-5 h-5 text-[#00609a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <p className="text-xl font-medium leading-relaxed text-white sm:text-2xl">
+                <span className="font-semibold">Direct pathway</span> to UK education
+              </p>
+            </li>
+          </ul>
+
+          <button className="mt-8 px-8 py-3 bg-[#00609a] text-white font-bold rounded-md text-lg hover:bg-[#004a7a] transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">
+            Learn More
+            <svg className="inline-block w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default VideoWithFallback;
+export default Video;

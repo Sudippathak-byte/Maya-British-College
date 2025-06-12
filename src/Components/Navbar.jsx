@@ -37,35 +37,39 @@ const menuData = {
     items: [
       {
         title: "Undergraduate",
-        // ADD YOUR UNDERGRADUATE PAGE SRC HERE: e.g., "/undergraduate" or "/programs/undergraduate"
         link: "/undergraduate",
         items: [
           {
             title: "BSc (Hons) Business Computing & Information Systems",
-            // ADD YOUR BUSINESS COMPUTING PAGE SRC HERE
             link: "/programs/business-computing"
           },
           {
             title: "BSc (Hons) Cyber Security & Networking",
-            // ADD YOUR CYBER SECURITY PAGE SRC HERE
             link: "/programs/cyber-security"
-          },
-          {
-            title: "Bachelor of Business Studies (BBS)",
-            // ADD YOUR BBS PAGE SRC HERE
-            link: "/programs/bbs"
           }
         ]
       },
       {
-        title: "Graduate",
-        // ADD YOUR GRADUATE PAGE SRC HERE: e.g., "/graduate" or "/programs/graduate"
-        link: "/graduate",
+        title: "Diploma",
+        link: "/Diploma",
         items: [
           {
-            title: "Master of Business Studies (MBS)",
-            // ADD YOUR MBS PAGE SRC HERE
-            link: "/programs/mbs"
+            title: "Level 4 Diploma in Computing (L4DC)",
+            link: "/programs/l4dc"
+          },
+          {
+            title: "Level 5 Diploma in Computing (L5DC)",
+            link: "/programs/l5dc"
+          },
+        ]
+      },
+      {
+        title: "Short Courses",
+        link: "/Short_Courses",
+        items: [
+          {
+            title: "Cyber Security",
+            link: "/programs/CyberSecurity"
           }
         ]
       }
@@ -76,54 +80,44 @@ const menuData = {
     items: [
       {
         title: "Academies",
-        // ADD YOUR ACADEMIES PAGE SRC HERE: e.g., "/academies" or "/departments/academies"
         link: "/academies",
         items: [
           {
             title: "Computing",
-            // ADD YOUR COMPUTING ACADEMY PAGE SRC HERE
             link: "/academies/computing"
           },
           {
             title: "Data Science",
-            // ADD YOUR DATA SCIENCE ACADEMY PAGE SRC HERE
             link: "/academies/data-science"
           },
           {
             title: "Cyber Security",
-            // ADD YOUR CYBER SECURITY ACADEMY PAGE SRC HERE
             link: "/academies/cyber-security"
           }
         ]
       },
       {
         title: "Administration",
-        // ADD YOUR ADMINISTRATION PAGE SRC HERE: e.g., "/administration" or "/departments/administration"
         link: "/administration",
         items: [
           {
             title: "Faculty & Staff",
-            // ADD YOUR FACULTY & STAFF PAGE SRC HERE
             link: "/administration/faculty-staff"
           },
           {
             title: "Admissions Office",
-            // ADD YOUR ADMISSIONS PAGE SRC HERE
             link: "/administration/admissions"
           },
           {
             title: "Student Services",
-            // ADD YOUR STUDENT SERVICES PAGE SRC HERE
             link: "/administration/student-services"
           },
           {
             title: "Contact & Office Hours",
-            // ADD YOUR CONTACT PAGE SRC HERE
             link: "/administration/contact"
           },
           {
             title: "Policies & Regulations",
-            // ADD YOUR POLICIES PAGE SRC HERE
             link: "/administration/policies"
           }
         ]
@@ -134,19 +128,16 @@ const menuData = {
     { 
       title: "CAREER", 
       icon: null,
-      // ADD YOUR CAREER PAGE SRC HERE
       link: "/career"
     },
     { 
       title: "APPLY NOW", 
       icon: "download",
-      // ADD YOUR APPLICATION PAGE SRC HERE
       link: "/apply"
     },
     { 
       title: "VISIT US", 
       icon: "calendar_today",
-      // ADD YOUR VISIT/CONTACT PAGE SRC HERE
       link: "/visit"
     }
   ]
@@ -157,14 +148,12 @@ const Navbar = () => {
   const [hoveredMenu, setHoveredMenu] = useState(null);
   const [hoveredSubmenu, setHoveredSubmenu] = useState(null);
   
-  // Enhanced refs for perfect timeout management
   const mainTimeoutRef = useRef(null);
   const submenuTimeoutRef = useRef(null);
   const navbarRef = useRef(null);
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 
-  // Clear all timeouts on component unmount
   useEffect(() => {
     return () => {
       if (mainTimeoutRef.current) clearTimeout(mainTimeoutRef.current);
@@ -172,9 +161,7 @@ const Navbar = () => {
     };
   }, []);
 
-  // Perfect hover handlers - no more defects between menus
   const handleMainMenuEnter = (menuKey) => {
-    // Clear any existing timeouts immediately
     if (mainTimeoutRef.current) {
       clearTimeout(mainTimeoutRef.current);
       mainTimeoutRef.current = null;
@@ -185,23 +172,19 @@ const Navbar = () => {
     }
     
     setHoveredMenu(menuKey);
-    // Reset submenu when switching main menus
     if (hoveredMenu !== menuKey) {
       setHoveredSubmenu(null);
     }
   };
 
   const handleMainMenuLeave = (e) => {
-    // Check if we're moving to a dropdown or another menu item
     const relatedTarget = e.relatedTarget;
     if (relatedTarget && navbarRef.current?.contains(relatedTarget)) {
-      // If moving within navbar, use shorter timeout
       mainTimeoutRef.current = setTimeout(() => {
         setHoveredMenu(null);
         setHoveredSubmenu(null);
       }, 150);
     } else {
-      // If leaving navbar completely, close immediately
       setHoveredMenu(null);
       setHoveredSubmenu(null);
     }
@@ -221,7 +204,6 @@ const Navbar = () => {
     }, 150);
   };
 
-  // Keep all menus open when hovering over dropdown areas
   const handleDropdownEnter = () => {
     if (mainTimeoutRef.current) {
       clearTimeout(mainTimeoutRef.current);
@@ -234,7 +216,6 @@ const Navbar = () => {
   };
 
   const closeAllMenus = () => {
-    // Clear all timeouts
     if (mainTimeoutRef.current) clearTimeout(mainTimeoutRef.current);
     if (submenuTimeoutRef.current) clearTimeout(submenuTimeoutRef.current);
     
@@ -243,7 +224,6 @@ const Navbar = () => {
     setMobileMenuOpen(false);
   };
 
-  // Enhanced dropdown items with navigation
   const renderDropdownItems = (items, isNested = false) => {
     return items.map((item, index) => (
       <a 
@@ -266,7 +246,6 @@ const Navbar = () => {
     ));
   };
 
-  // Perfect desktop dropdown with zero defects
   const renderDesktopDropdown = (menuKey) => {
     const menu = menuData[menuKey];
     const isOpen = hoveredMenu === menuKey;
@@ -278,24 +257,25 @@ const Navbar = () => {
         onMouseLeave={handleMainMenuLeave}
       >
         <button 
-          className="relative flex items-center px-4 py-2 font-semibold text-red-700 transition-all duration-300 rounded-lg hover:text-red-900 hover:bg-gradient-to-r hover:from-red-50 hover:to-pink-50 group-hover:shadow-md"
+          className="relative flex items-center px-4 py-2 font-medium text-gray-800 transition-all duration-300 rounded-lg hover:text-blue-900 group-hover:shadow-sm"
           style={{
             transform: isOpen ? 'translateY(-1px)' : 'translateY(0)',
-            transition: 'all 0.3s cubic-bezier(0.23, 1, 0.32, 1)'
+            transition: 'all 0.3s cubic-bezier(0.23, 1, 0.32, 1)',
+            color: isOpen ? '#00609a' : '#1f2937'
           }}
         >
           {menu.title}
           <span 
             className="ml-2 text-xs transition-all duration-300"
             style={{
-              transform: isOpen ? 'rotate(180deg) scale(1.1)' : 'rotate(0deg) scale(1)'
+              transform: isOpen ? 'rotate(180deg) scale(1.1)' : 'rotate(0deg) scale(1)',
+              color: isOpen ? '#00609a' : '#1f2937'
             }}
           >
             ⌄
           </span>
-          {/* Active indicator */}
           <div 
-            className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-red-500 to-pink-500 transition-all duration-300"
+            className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 transition-all duration-300"
             style={{
               width: isOpen ? '80%' : '0%',
               transform: 'translateX(-50%)'
@@ -303,13 +283,12 @@ const Navbar = () => {
           />
         </button>
 
-        {/* Main Dropdown with perfect positioning */}
         <div 
-          className="absolute left-0 z-30 mt-3 bg-white border border-gray-100 shadow-2xl w-72 rounded-2xl top-full"
+          className="absolute left-0 z-30 mt-3 bg-white border border-gray-100 shadow-xl w-72 rounded-xl top-full"
           style={{
             ...animationStyles.dropdown,
             ...(isOpen ? animationStyles.dropdownVisible : {}),
-            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 10px 25px -5px rgba(0, 0, 0, 0.1)'
+            boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
           }}
           onMouseEnter={handleDropdownEnter}
           onMouseLeave={handleMainMenuLeave}
@@ -321,24 +300,24 @@ const Navbar = () => {
               
               return (
                 <div key={idx} className="relative">
-                  {/* Section header with navigation */}
                   <a
                     href={section.link || "#"}
-                    className="flex items-center justify-between px-5 py-4 font-bold transition-all duration-300 border-l-4 border-transparent cursor-pointer group"
+                    className="flex items-center justify-between px-5 py-3 font-medium transition-all duration-300 border-l-4 border-transparent cursor-pointer group"
                     style={{
-                      color: '#00609a',
-                      animation: `slideIn 0.4s cubic-bezier(0.23, 1, 0.32, 1) ${idx * 0.15}s both`
+                      color: isSubmenuOpen ? '#00609a' : '#1f2937',
+                      animation: `slideIn 0.4s cubic-bezier(0.23, 1, 0.32, 1) ${idx * 0.15}s both`,
+                      borderLeftColor: isSubmenuOpen ? '#00609a' : 'transparent'
                     }}
                     onMouseEnter={() => handleSubmenuEnter(sectionKey)}
                     onClick={closeAllMenus}
                   >
-                    <span className="transition-colors duration-200 group-hover:opacity-80">
+                    <span className="transition-colors duration-200 group-hover:text-blue-800">
                       {section.title}
                     </span>
                     <span
                       className="text-xs transition-all duration-300"
                       style={{
-                        color: '#00609a',
+                        color: isSubmenuOpen ? '#00609a' : '#9ca3af',
                         transform: isSubmenuOpen ? 'rotate(180deg) scale(1.1)' : 'rotate(0deg) scale(1)'
                       }}
                     >
@@ -346,9 +325,8 @@ const Navbar = () => {
                     </span>
                   </a>
                   
-                  {/* Nested Dropdown with perfect alignment */}
                   <div 
-                    className={`absolute z-40 bg-white rounded-2xl shadow-2xl border border-gray-100 ${
+                    className={`absolute z-40 bg-white rounded-xl shadow-xl border border-gray-100 ${
                       menuKey === 'programs' ? 'w-96' : 'w-80'
                     }`}
                     style={{
@@ -357,7 +335,7 @@ const Navbar = () => {
                       marginLeft: '0.75rem',
                       ...animationStyles.nestedDropdown,
                       ...(isSubmenuOpen ? animationStyles.nestedDropdownVisible : {}),
-                      boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 10px 25px -5px rgba(0, 0, 0, 0.1)'
+                      boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
                     }}
                     onMouseEnter={() => handleSubmenuEnter(sectionKey)}
                     onMouseLeave={handleSubmenuLeave}
@@ -375,7 +353,6 @@ const Navbar = () => {
     );
   };
 
-  // Enhanced mobile dropdown with navigation
   const renderMobileDropdown = (menuKey) => {
     const menu = menuData[menuKey];
     const [isOpen, setIsOpen] = useState(false);
@@ -384,14 +361,18 @@ const Navbar = () => {
     return (
       <div className="mb-3">
         <button 
-          className="flex items-center justify-between w-full px-5 py-4 font-bold text-left text-red-700 transition-all duration-300 shadow-sm rounded-2xl bg-gradient-to-r from-red-50 to-pink-50 hover:from-red-100 hover:to-pink-100 hover:shadow-md"
+          className="flex items-center justify-between w-full px-5 py-4 font-medium text-left text-gray-800 transition-all duration-300 shadow-sm rounded-xl bg-gray-50 hover:bg-gray-100"
           onClick={() => setIsOpen(!isOpen)}
+          style={{
+            backgroundColor: isOpen ? '#f3f4f6' : '#f9fafb'
+          }}
         >
-          <span>{menu.title}</span>
+          <span style={{ color: isOpen ? '#00609a' : '#1f2937' }}>{menu.title}</span>
           <span
             className="text-sm transition-transform duration-300"
             style={{
-              transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)'
+              transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+              color: isOpen ? '#00609a' : '#9ca3af'
             }}
           >
             ⌄
@@ -414,18 +395,22 @@ const Navbar = () => {
                 <div key={idx} className="mb-3">
                   <a
                     href={section.link || "#"}
-                    className="flex items-center justify-between w-full px-4 py-3 font-semibold text-left transition-all duration-300 shadow-sm rounded-xl"
+                    className="flex items-center justify-between w-full px-4 py-3 font-medium text-left transition-all duration-300 rounded-lg shadow-sm"
                     style={{
-                      color: '#00609a',
-                      background: 'linear-gradient(to right, rgba(0, 96, 154, 0.1), rgba(0, 96, 154, 0.15))'
+                      color: isSubmenuOpen ? '#00609a' : '#1f2937',
+                      backgroundColor: isSubmenuOpen ? '#f0f7ff' : '#f3f4f6'
                     }}
-                    onClick={() => setOpenSubmenu(isSubmenuOpen ? null : sectionKey)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setOpenSubmenu(isSubmenuOpen ? null : sectionKey);
+                    }}
                   >
                     <span>{section.title}</span>
                     <span
                       className="text-xs transition-transform duration-300"
                       style={{
-                        transform: isSubmenuOpen ? 'rotate(180deg)' : 'rotate(0deg)'
+                        transform: isSubmenuOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                        color: isSubmenuOpen ? '#00609a' : '#9ca3af'
                       }}
                     >
                       ⌄
@@ -444,7 +429,7 @@ const Navbar = () => {
                         <a 
                           key={i} 
                           href={item.link || "#"}
-                          className="block px-4 py-3 text-gray-700 transition-all duration-200 border-l-2 border-transparent hover:pl-6 rounded-xl"
+                          className="block px-4 py-3 text-gray-700 transition-all duration-200 border-l-2 border-transparent rounded-lg hover:pl-6 hover:border-blue-400 hover:text-blue-800"
                           style={{
                             borderColor: 'transparent',
                             color: '#374151'
@@ -467,7 +452,6 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Enhanced CSS for perfect animations */}
       <style jsx>{`
         @keyframes slideIn {
           from {
@@ -480,11 +464,10 @@ const Navbar = () => {
           }
         }
         
-        .group:hover .group-hover\\:shadow-md {
-          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        .group:hover .group-hover\\:shadow-sm {
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
         }
         
-        /* Professional hover effects for dropdown items */
         .dropdown-item-hover:hover {
           background: linear-gradient(to right, rgba(0, 96, 154, 0.1), rgba(0, 96, 154, 0.15));
           color: #00609a;
@@ -496,118 +479,158 @@ const Navbar = () => {
           border-left-color: #00609a;
         }
         
-        /* Smooth scroll behavior */
         * {
           scroll-behavior: smooth;
         }
+        
+        .nav-container {
+          width: 100%;
+          margin: 0 auto;
+        }
+        
+        @media (min-width: 1280px) {
+          .nav-container {
+            width: 80%;
+          }
+        }
       `}</style>
 
-      {/* Material Icons CDN */}
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
       
       <div className="relative" ref={navbarRef}>
-        <nav className="relative z-50 bg-white border-b-2 border-gray-100 shadow-xl">
-          {/* Top Bar */}
-          <div className="flex items-center justify-between px-4 py-4 md:px-8 lg:px-16">
-            {/* Logo & Title */}
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center justify-center transition-all duration-300 shadow-xl w-14 h-14 hover:shadow-2xl hover:scale-105">
-                <div className="flex items-center justify-center h-12 h-16 rounded-full">
-                  <img src="/mayalogo.jpg" alt="MayaLogo.png" />
+        {/* Top Announcement Bar */}
+        <div className="w-full px-4 py-2 text-center text-white bg-blue-900">
+          <p className="text-sm font-medium">Maya British College - Excellence in Higher Education</p>
+        </div>
+        
+        <nav className="relative z-50 bg-white border-b border-gray-200 shadow-sm">
+          <div className="mx-auto nav-container">
+            {/* Top Bar */}
+            <div className="flex items-center justify-between px-4 py-3 md:px-8 lg:px-0">
+              {/* Logo & Title - Updated Section */}
+              <div className="flex items-center space-x-4">
+                <div className="flex items-center justify-center transition-all duration-300">
+                  <img 
+                    src="/src/assets/mayalogo.jpg" 
+                    alt="Maya British College Logo" 
+                    className="object-contain h-16"
+                    style={{
+                      filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))'
+                    }}
+                  />
+                </div>
+                <div className="hidden sm:block">
+                  <h1 
+                    className="text-2xl font-bold tracking-tight"
+                    style={{ 
+                      color: '#00609a',
+                      fontFamily: "'Playfair Display', serif",
+                      letterSpacing: '0.5px'
+                    }}
+                  >
+                    MAYA <span className="font-normal">British College</span>
+                  </h1>
+                  <p 
+                    className="mt-1 text-xs font-medium text-gray-600"
+                    style={{
+                      letterSpacing: '0.5px'
+                    }}
+                  >
+                    Affiliated to University of Central Lancashire, UK
+                  </p>
                 </div>
               </div>
-              <div className="hidden sm:block">
-                <h1 
-                  className="text-2xl font-bold transition-all duration-300 bg-gradient-to-r bg-clip-text"
+
+              {/* Hamburger Menu Button */}
+              <button 
+                className="flex flex-col items-center justify-center w-10 h-10 space-y-1.5 md:hidden transition-all duration-300 hover:bg-gray-100 rounded-lg"
+                onClick={toggleMobileMenu}
+                aria-label="Toggle menu"
+              >
+                <span 
+                  className="w-6 h-0.5 bg-gray-800 rounded-full transition-all duration-400"
                   style={{
-                    color: '#00609a',
-                    background: `linear-gradient(to right, #00609a, #004d7a)`,
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent'
+                    transform: mobileMenuOpen ? 'rotate(45deg) translateY(6px)' : 'rotate(0deg) translateY(0)',
+                    backgroundColor: mobileMenuOpen ? '#00609a' : '#1f2937'
                   }}
-                >
-                  Maya British College
-                </h1>
-                <p className="text-sm font-medium text-gray-600 transition-colors duration-300 hover:text-gray-800">
-                  Affiliated to University of Central Lancashire, UK
-                </p>
-              </div>
-            </div>
+                />
+                <span 
+                  className="w-6 h-0.5 bg-gray-800 rounded-full transition-all duration-400"
+                  style={{
+                    opacity: mobileMenuOpen ? 0 : 1,
+                    transform: `scaleX(${mobileMenuOpen ? 0 : 1})`,
+                    backgroundColor: mobileMenuOpen ? '#00609a' : '#1f2937'
+                  }}
+                />
+                <span 
+                  className="w-6 h-0.5 bg-gray-800 rounded-full transition-all duration-400"
+                  style={{
+                    transform: mobileMenuOpen ? 'rotate(-45deg) translateY(-6px)' : 'rotate(0deg) translateY(0)',
+                    backgroundColor: mobileMenuOpen ? '#00609a' : '#1f2937'
+                  }}
+                />
+              </button>
 
-            {/* Enhanced Hamburger Menu Button */}
-            <button 
-              className="flex flex-col items-center justify-center w-12 h-12 space-y-1.5 md:hidden transition-all duration-300 hover:scale-110 hover:bg-gray-50 rounded-xl"
-              onClick={toggleMobileMenu}
-              aria-label="Toggle menu"
-            >
-              <span 
-                className="w-7 h-0.5 bg-gray-800 rounded-full transition-all duration-400"
-                style={{
-                  transform: mobileMenuOpen ? 'rotate(45deg) translateY(7px)' : 'rotate(0deg) translateY(0)',
-                }}
-              />
-              <span 
-                className="w-7 h-0.5 bg-gray-800 rounded-full transition-all duration-400"
-                style={{
-                  opacity: mobileMenuOpen ? 0 : 1,
-                  transform: `scaleX(${mobileMenuOpen ? 0 : 1})`,
-                }}
-              />
-              <span 
-                className="w-7 h-0.5 bg-gray-800 rounded-full transition-all duration-400"
-                style={{
-                  transform: mobileMenuOpen ? 'rotate(-45deg) translateY(-7px)' : 'rotate(0deg) translateY(0)',
-                }}
-              />
-            </button>
-
-            {/* Desktop Navigation */}
-            <div className="items-center hidden space-x-2 text-sm font-medium md:flex lg:space-x-6">
-              {renderDesktopDropdown('programs')}
-              {renderDesktopDropdown('departments')}
-              
-              {menuData.quickLinks.map((link, index) => (
-                <a 
-                  key={index}
-                  href={link.link || "#"}
-                  className="flex items-center space-x-2 px-4 py-2 text-red-700 font-semibold transition-all duration-300 hover:text-red-900 hover:bg-gradient-to-r hover:from-red-50 hover:to-pink-50 rounded-xl hover:shadow-md hover:-translate-y-0.5 relative overflow-hidden group"
-                >
-                  {link.icon && (
-                    <span className="text-lg transition-transform duration-300 material-icons group-hover:scale-110">{link.icon}</span>
-                  )}
-                  <span>{link.title}</span>
-                  <div className="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-r from-red-100 to-pink-100 group-hover:opacity-20 rounded-xl" />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Enhanced Mobile Menu */}
-          <div 
-            className="overflow-hidden transition-all duration-500 ease-in-out md:hidden bg-gradient-to-b from-white via-gray-50 to-white"
-            style={{
-              maxHeight: mobileMenuOpen ? '700px' : '0px',
-              opacity: mobileMenuOpen ? 1 : 0
-            }}
-          >
-            <div className="px-4 py-5">
-              {renderMobileDropdown('programs')}
-              {renderMobileDropdown('departments')}
-              
-              <div className="mt-5 space-y-3">
+              {/* Desktop Navigation */}
+              <div className="items-center hidden space-x-2 text-sm font-medium md:flex lg:space-x-6">
+                {renderDesktopDropdown('programs')}
+                {renderDesktopDropdown('departments')}
+                
                 {menuData.quickLinks.map((link, index) => (
                   <a 
                     key={index}
                     href={link.link || "#"}
-                    className="flex items-center px-5 py-4 font-bold text-red-700 transition-all duration-300 shadow-sm rounded-2xl bg-gradient-to-r from-red-50 to-pink-50 hover:from-red-100 hover:to-pink-100 hover:shadow-md"
-                    onClick={closeAllMenus}
+                    className={`flex items-center space-x-2 px-4 py-2 font-medium transition-all duration-300 rounded-lg hover:shadow-sm relative overflow-hidden group ${
+                      index === menuData.quickLinks.length - 1 ? 'bg-blue-900 text-white hover:bg-blue-800' : 'text-blue-900 hover:bg-blue-50'
+                    }`}
                   >
                     {link.icon && (
-                      <span className="mr-3 text-xl material-icons">{link.icon}</span>
+                      <span 
+                        className="text-lg transition-transform duration-300 material-icons group-hover:scale-110"
+                        style={{ color: index === menuData.quickLinks.length - 1 ? 'white' : '#00609a' }}
+                      >
+                        {link.icon}
+                      </span>
                     )}
-                    {link.title}
+                    <span>{link.title}</span>
+                    {index !== menuData.quickLinks.length - 1 && (
+                      <div className="absolute inset-0 transition-opacity duration-300 rounded-lg opacity-0 bg-gradient-to-r from-blue-50 to-blue-100 group-hover:opacity-20" />
+                    )}
                   </a>
                 ))}
+              </div>
+            </div>
+
+            {/* Enhanced Mobile Menu */}
+            <div 
+              className="overflow-hidden transition-all duration-500 ease-in-out bg-white md:hidden"
+              style={{
+                maxHeight: mobileMenuOpen ? '1000px' : '0px',
+                opacity: mobileMenuOpen ? 1 : 0
+              }}
+            >
+              <div className="px-4 py-5 border-t border-gray-200">
+                {renderMobileDropdown('programs')}
+                {renderMobileDropdown('departments')}
+                
+                <div className="mt-5 space-y-3">
+                  {menuData.quickLinks.map((link, index) => (
+                    <a 
+                      key={index}
+                      href={link.link || "#"}
+                      className={`flex items-center px-5 py-3 font-medium transition-all duration-300 rounded-lg ${
+                        index === menuData.quickLinks.length - 1 ? 'bg-blue-900 text-white hover:bg-blue-800' : 'text-blue-900 hover:bg-blue-50'
+                      }`}
+                      onClick={closeAllMenus}
+                    >
+                      {link.icon && (
+                        <span className="mr-3 text-xl material-icons">{link.icon}</span>
+                      )}
+                      {link.title}
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
