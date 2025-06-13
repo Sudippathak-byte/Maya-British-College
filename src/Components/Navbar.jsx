@@ -37,7 +37,6 @@ const menuData = {
     items: [
       {
         title: "Undergraduate",
-        link: "/undergraduate",
         items: [
           {
             title: "BSc (Hons) Business Computing & Information Systems",
@@ -51,7 +50,6 @@ const menuData = {
       },
       {
         title: "Diploma",
-        link: "/Diploma",
         items: [
           {
             title: "Level 4 Diploma in Computing (L4DC)",
