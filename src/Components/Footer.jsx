@@ -14,7 +14,7 @@ const Footer = () => {
                         <div className="absolute inset-0 transition-all duration-500 rounded-full bg-white/10 blur-md group-hover:blur-lg"></div>
                        
                             <img 
-                                src="/mayalogo.jpg" 
+                                src="/logo2.png" 
                                 alt="MAYA British College Logo" 
                                 className="object-contain h-16"
                             />

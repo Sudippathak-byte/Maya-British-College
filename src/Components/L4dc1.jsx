@@ -16,7 +16,8 @@ const L4dc1 = () => {
             alt="NCC Education Logo"
             className="w-[160px] h-[140px] mr-6 mb-4 lg:mb-0 transition-transform duration-300 ease-in-out hover:scale-110"
           />
-        </a>      
+        </a>  
+                <a href="https://www.nccedu.com/qualifications/diplomas/ncc-education-level-4-diploma-in-computing-l4dc/" target='_main'><strong><b><u>NCC Education Level 4 Diploma in Computing (L4DC)</u></b></strong></a>      
         <div>
           <p className="font-['Roboto',sans-serif] text-[16px] leading-relaxed mb-6">
             The NCC Education Level 4 Diploma in Computing (L4DC) is an Ofqual regulated qualification. The qualification makes up the first year of a Computing/ IT degree pathway. The qualification is equivalent to the first year of an IT degree in the UK university system.
